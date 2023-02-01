@@ -29,8 +29,8 @@ public class Team {
     public ArrayList<Player> getPlayers() {
         return teamPlayers;
     }
-
-    //Statistic methods
+    //endregion
+    //region Statistic methods
     public int teamGoals(){
         int totalGoals = 0;
         for (Player teamPlayer : teamPlayers) {
@@ -57,7 +57,7 @@ public class Team {
 
     public String teamRating() {
         String rating = "null";
-        if (teamTotal() > 20) {
+        if (teamTotal() >= 20) {
             rating = "***";
         }else if (teamTotal()>=10 && teamTotal()<20) {
             rating = "**";

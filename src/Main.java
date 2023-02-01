@@ -6,7 +6,7 @@ public class Main {
     public static void main(String[] args) {
         //variables in case of later program expansion
         int playersPerTeam = 3;
-        int numberOfTeams = 1;
+        int numberOfTeams = 3;
         //objects
         ArrayList<Team> teams = new ArrayList<>();
         Scanner scan = new Scanner(System.in);
@@ -28,11 +28,17 @@ public class Main {
         //region user input for players
         int goals;
         int assists;
+        String playerName;
         for (int i=0;i<numberOfTeams;i++){
             System.out.println("Enter players for "+teams.get(i).getTeamName()+": ");
             for (int j=0;j<playersPerTeam;j++){
-                System.out.println("Enter player # "+(j+1)+":");
-                String playerName = scan.nextLine();
+                do {
+                    System.out.println("Enter player # " + (j + 1) + ":");
+                    playerName = scan.nextLine();
+                    if (playerName.length()<3){
+                        System.out.println("Player names must be greater than three characters");
+                    }
+                } while (playerName.length() < 3);
                 //region Player goals input with validation
                 do {
                     System.out.println("Enter number of goals for "+playerName+":");
@@ -76,7 +82,8 @@ public class Main {
         System.out.println("REPORT: Stats per Team");
         System.out.println("======================");
         for (Team i : teams){
-            System.out.println(i.getTeamName()+":   G - "+i.teamGoals()+"  A - "+i.teamAssists()+"  Total - "+i.teamTotal()+"  Budget - "+i.getTeamBudget());
+            System.out.println(i.getTeamName()+":   G - "+i.teamGoals()+"  A - "+i.teamAssists()+"  Total - "+i.teamTotal());
+            System.out.printf("Budget - $"+"%.2f \n",i.getTeamBudget());
             System.out.println("Rating: "+i.teamRating()+" stars");
         }
         System.out.println("======================");
@@ -87,6 +94,7 @@ public class Main {
                 System.out.println(i.getTeamName());
                 System.out.println(j.getPlayerName()+":    G - "+j.getPlayerGoals()+"   A - "+j.getPlayerAssists()+"   Total - "+j.playerTotal());
             }
+            System.out.println("======================");
         }
         //endregion
     }
