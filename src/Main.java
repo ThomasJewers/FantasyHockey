@@ -12,15 +12,22 @@ public class Main {
         Scanner scan = new Scanner(System.in);
 
         //region user input for team names and random budget
+        String tempTeam;
         for (int i=0;i<numberOfTeams;i++) {
-            System.out.println("Enter name for team # "+(i+1)+": ");
+            do {
+                System.out.println("Enter name for team # "+(i+1)+": ");
+                tempTeam = scan.nextLine();
+                if (tempTeam.length() < 3){
+                    System.out.println("Team names must be greater than three characters");
+                }
+            } while (tempTeam.length() < 3);
             float budget = (float) (Math.random() * 100000);
-            teams.add(new Team(scan.nextLine(), budget));
+            teams.add(new Team(tempTeam, budget));
         }
         //endregion
         //region user input for players
-        int goals = 0;
-        int assists = 0;
+        int goals;
+        int assists;
         for (int i=0;i<numberOfTeams;i++){
             System.out.println("Enter players for "+teams.get(i).getTeamName()+": ");
             for (int j=0;j<playersPerTeam;j++){
