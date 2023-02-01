@@ -1,3 +1,4 @@
+//Thomas Jewers 01/31/2023
 import java.util.ArrayList;
 
 public class Team {
@@ -32,24 +33,24 @@ public class Team {
     //Statistic methods
     public int teamGoals(){
         int totalGoals = 0;
-        for (int i = 0; i<teamPlayers.size(); i++){
-            totalGoals = totalGoals + teamPlayers.get(i).getPlayerGoals();
+        for (Player teamPlayer : teamPlayers) {
+            totalGoals = totalGoals + teamPlayer.getPlayerGoals();
         }
         return totalGoals;
     }
 
     public int teamAssists(){
         int totalAssists = 0;
-        for (int i = 0; i<teamPlayers.size(); i++){
-            totalAssists = totalAssists + teamPlayers.get(i).getPlayerAssists();
+        for (Player teamPlayer : teamPlayers) {
+            totalAssists = totalAssists + teamPlayer.getPlayerAssists();
         }
         return totalAssists;
     }
 
     public int teamTotal(){
         int totalTotal = 0;
-        for (int i = 0; i<teamPlayers.size(); i++){
-            totalTotal = totalTotal + teamPlayers.get(i).getPlayerAssists() + teamPlayers.get(i).getPlayerGoals();
+        for (Player teamPlayer : teamPlayers) {
+            totalTotal = totalTotal + teamPlayer.getPlayerAssists() + teamPlayer.getPlayerGoals();
         }
         return totalTotal;
     }

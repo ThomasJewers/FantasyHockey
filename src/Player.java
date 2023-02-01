@@ -1,3 +1,4 @@
+//Thomas Jewers 01/31/2023
 public class Player {
     //Player class variables
     private String playerName;
